@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_provider/providers/counter_provider.dart';
 import 'package:flutter_provider/screens/home_screen.dart';
+import 'package:flutter_provider/screens/second_screen.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +20,10 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Provider',
       theme: ThemeData.dark(),
       initialRoute: '/',
-      routes: {'/': (context) => HomeScreen()},
+      routes: {
+        '/': (context) => HomeScreen(),
+        '/second': (context) => SecondScreen()
+      },
     );
   }
 }
