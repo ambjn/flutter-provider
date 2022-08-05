@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_provider/providers/counter_provider.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -18,7 +20,10 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [const Text("You have pushed the button this many times:")],
+          children: [
+            Text(
+                "You have pushed the button this many times: ${context.watch<Counter>().count}")
+          ],
         ),
       ),
       floatingActionButton: Row(
@@ -28,24 +33,26 @@ class _HomeScreenState extends State<HomeScreen> {
             key: const Key('decrement_floatingActionButton'),
             tooltip: 'Decrement',
             child: const Icon(Icons.remove),
-            onPressed: () {},
+            onPressed: () => context.read<Counter>().decrement(),
           ),
           const SizedBox(
             width: 10,
           ),
           FloatingActionButton(
-              key: const Key('reset_floatingActionButton'),
-              tooltip: 'Reset',
-              child: const Icon(Icons.exposure_zero),
-              onPressed: () {}),
+            key: const Key('reset_floatingActionButton'),
+            tooltip: 'Reset',
+            child: const Icon(Icons.exposure_zero),
+            onPressed: () => context.read<Counter>().reset(),
+          ),
           const SizedBox(
             width: 10,
           ),
           FloatingActionButton(
-              key: const Key('increment_floatingActionButton'),
-              tooltip: 'Increment',
-              child: const Icon(Icons.add),
-              onPressed: () {}),
+            key: const Key('increment_floatingActionButton'),
+            tooltip: 'Increment',
+            child: const Icon(Icons.add),
+            onPressed: () => context.read<Counter>().increment(),
+          ),
           const SizedBox(
             width: 10,
           ),
