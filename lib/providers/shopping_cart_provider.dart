@@ -5,4 +5,9 @@ class ShoppingCart with ChangeNotifier {
   int get count => _shoppingCart.length;
 
   List<String> get cart => _shoppingCart;
+
+  void addItem(String item) {
+    _shoppingCart.add(item);
+    notifyListeners();
+  }
 }
